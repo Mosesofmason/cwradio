@@ -1,0 +1,460 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 8.0">
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+
+
+
+    <span class="Apple-style-span" 
+        style="border-collapse: separate; color: rgb(0, 0, 0); font-family: »ªÎÄÖÐËÎ; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; font-size: medium; ">
+    <span class="Apple-style-span" 
+        style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 18px; ">
+    <div class="litcontent" 
+        style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            Okay. I would like to start with a little explanation of digital sound and its 
+            archiving in computers. A long, long time ago, audio signals, like others, were 
+            processed and archived in continuous form. They were so-called analogous 
+            signals. This type of signals has a lot of advantages; one of them is that an 
+            analogous signal corresponds to the physical process of changing some value. For 
+            example, when we speak, our vocal cords generate sound vibrations that emit into 
+            space, and by means of an analogous apparatus, we can easily register and save 
+            it (on magnetic tape, for example). But we have also a great disadvantage here: 
+            This is the most faithful representation of some physical value, and when the 
+            form of analogous signal changes (under the influence of noise, for example), 
+            you can lose all information that this signal carries. In terms of information 
+            theory: Analogous signal has no superfluity.</p>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            Digital signal has no such disadvantage because the digital representation of a 
+            signal has superfluity. The form of a digital signal is just a number of 1s and 
+            0s (electrical pulses with 1 and 0 amplitude). So, the digital signal must be 
+            able to carry any information that is coded in the sequence of 1s and 0s. This 
+            means that digital signals have only two stable states, ON and OFF. Because of 
+            this feature, they can be easily recovered even in the case when their form is 
+            heavily changed (furthermore, there are special types of coding¡ªso-called 
+            antinoise coding¡ªthat can improve the stability of digital signals). Digital 
+            signals have been widely adopted in many branches: communication, navigation, 
+            medicine, audio signals processing, and computers.</p>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            I know that you are more interested in the problem: How is digital data stored 
+            on a computer, and how I can work with it? I don&#39;t want to go deeper in digital 
+            signals theory. You, as a programmer, have to know just one thing: A digital 
+            signal is an array of numbers (and you will get your own array with data if you 
+            read this article to the end). For a digital audio signal, it can be 8- or 
+            16-bit numbers.</p>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            There are a lot of standards of storing digital audio (AU, VOC, WAVE, AIFF, 
+            AIFF-C, and IFF/8VX), but as a result of the fact that Microsoft Corporation 
+            uses WAVE files in its Windows operation system, they became the most popular.</p>
+        <h3 style="margin-top: 0.2em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; font-weight: bold; color: rgb(0, 0, 63); line-height: 1.3em; ">
+            WAVE File Format</h3>
+    </div>
+    <div class="toolbox noBullets colRight" 
+        style="margin-top: 15px; margin-right: 0px; margin-bottom: 5px; margin-left: 10px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; float: right; width: 160px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(204, 204, 204); border-right-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); border-left-color: rgb(204, 204, 204); font-size: 11px; ">
+        <ul style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 5px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 5px; ">
+            <li class="comment_linky" 
+                style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 5px; padding-right: 0px; padding-bottom: 5px; padding-left: 25px; list-style-type: none; list-style-position: outside; list-style-image: initial; background-image: url(http://www.codeguru.com/newimg/images/icon_comment.gif); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; background-position: 0% 50%; background-repeat: no-repeat no-repeat;">
+                <a href="#comment_form" rel="nofollow" 
+                    style="color: rgb(5, 48, 97); text-decoration: underline !important; font-weight: bold; ">
+                <nobr>
+                Post a comment</nobr></a></li>
+            <li class="email" 
+                style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 5px; padding-right: 0px; padding-bottom: 5px; padding-left: 25px; list-style-type: none; list-style-position: outside; list-style-image: initial; background-image: url(http://www.codeguru.com/newimg/images/icon_email.gif); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; background-position: 0% 50%; background-repeat: no-repeat no-repeat;">
+                <a href="http://www.codeguru.com/cpp/g-m/multimedia/audio/email.php/c4739/CWaveFile----a-Class-for-Working-with-and-Representing-Data-from-WAVEs.htm" 
+                    rel="nofollow" 
+                    style="color: rgb(5, 48, 97); text-decoration: underline !important; font-weight: bold; ">
+                Email Article</a></li>
+            <li class="print" 
+                style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 5px; padding-right: 0px; padding-bottom: 5px; padding-left: 25px; list-style-type: none; list-style-position: outside; list-style-image: initial; background-image: url(http://www.codeguru.com/newimg/images/icon_print.gif); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; background-position: 0% 50%; background-repeat: no-repeat no-repeat;">
+                <a href="http://www.codeguru.com/cpp/g-m/multimedia/audio/print.php/c4739/CWaveFile----a-Class-for-Working-with-and-Representing-Data-from-WAVEs.htm" 
+                    rel="nofollow" 
+                    style="color: rgb(5, 48, 97); text-decoration: underline !important; font-weight: bold; ">
+                Print Article</a></li>
+            <li id="toolBoxShareMenu" class="share" 
+                style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: -12px; padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 12px; list-style-type: none; list-style-position: outside; list-style-image: initial; background-image: url(http://www.codeguru.com/newimg/images/share_article-bg.gif); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; z-index: 100; position: relative; background-position: 0px -1000px; background-repeat: no-repeat no-repeat;">
+                <img alt="" class="icon" height="16" 
+                    src="http://www.codeguru.com/newimg/images/icon_share.gif" 
+                    style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; vertical-align: middle; margin-top: 0px; margin-right: 5px; margin-bottom: 2px; margin-left: 0px; " 
+                    width="16" /><span class="Apple-converted-space">&nbsp;</span><a href="#" 
+                    rel="nofollow" 
+                    style="color: rgb(5, 48, 97); text-decoration: underline !important; font-weight: bold; ">Share 
+                Articles</a><img 
+                    src="http://www.codeguru.com/newimg/images/arrow_down_spblue.gif" 
+                    style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; vertical-align: middle; margin-top: 0px; margin-right: 5px; margin-bottom: 2px; margin-left: 0px; " /></li>
+        </ul>
+    </div>
+    <div class="litcontent" 
+        style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            All WAVE files correspond to the RIFF specification. So, these files satisfy the 
+            following conditions:</p>
+        <ol style="margin-top: 1em; margin-right: 1em; margin-bottom: 1em; margin-left: 2em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; ">
+            <li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; list-style-type: decimal; list-style-position: outside; list-style-image: initial;">
+                They consist of separated data blocks, so-called chunks, that form a tree-based 
+                structure.</li>
+            <li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; list-style-type: decimal; list-style-position: outside; list-style-image: initial;">
+                Each block consists of a header and, in fact, data.</li>
+            <li style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; list-style-type: decimal; list-style-position: outside; list-style-image: initial;">
+                The first (and main) block of any RIFF file is a RIFF block; it is like the 
+                tree&#39;s root.</li>
+        </ol>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            But, let&#39;s go back to a WAVE file. A usual WAVE PCM file looks like this:</p>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            <img src="http://www.codeguru.com/img/legacy/multimedia/CWaveFile1.gif" 
+                style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; " /></p>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            The file begins with the header RIFF; after it, two subblocks are defined¡ªFMT 
+            and DATA. The RIFF contains of three elements: RIFF_ID, RIFF_SIZE, and 
+            RIFF_FORMAT.</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">struct RIFF
+{
+  _TCHAR riffID[4];         <span class="codeComment">//contains identifier &quot;RIFF&quot;</span>
+  DWORD riffSIZE;           <span class="codeComment">//File size minus 8 bytes</span>
+  _TCHAR riffFORMAT[4];     <span class="codeComment">//contains identifier &quot;WAVE&quot;</span>
+};
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            After the RIFF header, there is a format descriptor block (FMT):</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">struct FMT
+{
+  _TCHAR fmtID[4];          <span class="codeComment">//contains identifier: &quot;fmt &quot; (with
+                            //space)</span>
+  DWORD fmtSIZE;            <span class="codeComment">//contains the size of this block
+                            //(for WAVE PCM 16)</span>
+  WAVEFORM fmtFORMAT;       <span class="codeComment">//structure WAVEFORMATEX but without
+                            //cbSize field</span>
+};
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            The WAVEFORMAT structure is the key to understanding WAVEs. It contains a lot of 
+            information that we need when working with a WAVE.</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">struct WAVEFORM
+{
+  WORD wFormatTag;          <span class="codeComment">//format of digital sound</span>
+  WORD nChannels;           <span class="codeComment">//Number of channels (1 for mono and
+                            //2 for stereo)</span>
+  DWORD nSamplesPerSec;     <span class="codeComment">//Number of samples per second</span>
+  DWORD nAvgBytesPerSec;    <span class="codeComment">//Average number bytes of data per
+                            //second</span>
+  WORD nBlockAlign;         <span class="codeComment">//Minimal data size for playing</span>
+  WORD wBitsPerSample;      <span class="codeComment">//Bits per sample (8 or 16)</span>
+};
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            And, at last, the DATA block:</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">struct DATA
+{
+  _TCHAR dataID[4];         <span class="codeComment">//contains identifier: &quot;data&quot;</span>
+  DWORD dataSIZE;           <span class="codeComment">//data size</span>
+};
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            That&#39;s all you need to know about the WAVE header; after it, data follows. Okay, 
+            now let&#39;s consider the CWaveFile interface:</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">class CWaveFile : protected CFileMap, public  CObject {
+public:
+  CWaveFile( LPCTSTR fileName );
+    ~CWaveFile() {}
+    WAVEFORM* GetWaveFormat() { return &amp;pFMT-&gt;fmtFORMAT; }
+    DATA* GetWaveData() { return pDATA; }
+    LPVOID GetData() { return reinterpret_cast&lt; LPVOID &gt;
+                     ( dataAddress ); }
+    BOOL DrawData( CDC *pDC, RECT *pRect, CSize *pNewSize );
+protected:
+  PBYTE dataAddress;
+  RIFF* pRIFF;
+  FMT* pFMT;
+  DATA* pDATA;
+private:
+  BOOL CheckID(_TCHAR* idPar,_TCHAR A, _TCHAR B, _TCHAR C,
+               _TCHAR D);
+    void ReadWave();
+    void ReadRIFF();
+    void ReadFMT();
+    void ReadDATA();
+    void DrawByte( CDC *pDC );
+    void DrawWord( CDC *pDC );
+};
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            As you can see, CWaveFile is inherited from CObject (no explanation here) and 
+            CFileMap. It is a very interesting class and I want you to focus your attention 
+            on it.</p>
+        <h3 style="margin-top: 0.2em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; font-weight: bold; color: rgb(0, 0, 63); line-height: 1.3em; ">
+            Memory-Mapped Files</h3>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            Memory mapping is a very useful feature of the Windows system. The first time I 
+            implemented the CWaveFile class, I had no idea about memory mapping and my code 
+            needed to use buffers, copying data from it, and... and I had a lot of problems 
+            (but it was a working version). Memory mapping is a technique that provides file 
+            operation on a disk as if it were loaded to memory¡ªthrough pointers! Working 
+            with files mapped to memory is very easy and fast; furthermore, you don&#39;t need 
+            any buffers! So then, I have got to know about this nice feature. I started 
+            looking on the Internet for what the community was thinking about file mapping 
+            and were there any finished classes to handle the mapped files? So, I have found 
+            a very useful class written by<span class="Apple-converted-space">&nbsp;</span><a 
+                href="mailto:retalik@mail.ru" 
+                style="color: rgb(5, 48, 97); text-decoration: underline !important; ">Vitali 
+            Brusentsev</a><span class="Apple-converted-space">&nbsp;</span>(thanks, Vitali!). His 
+            class encapsulates all the functionality you need to work with files mapped to 
+            memory. So, I asked him whether I could use his class in my programs and I got a 
+            positive answer. I chose this class as base for my CWaveFile (as you can see, by 
+            protected inheritance), so I&#39;ve got all the functionality I need.</p>
+        <h3 style="margin-top: 0.2em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; font-weight: bold; color: rgb(0, 0, 63); line-height: 1.3em; ">
+            Using CWaveFile</h3>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            It is very easy to use my class in your projects. I would like to briefly 
+            describe the interface. CWaveFile has only one constructor with an argument. The 
+            argument is a path to the WAVE file. If something goes wrong, CWaveFile will 
+            generate a C++ exception; all exceptions are grouped in the following namespace:</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">namespace WaveErrors {
+  class FileOperation {};    <span class="codeComment">//something wrong with the file
+                             //(cannot be opened or something)</span>
+  class RiffDoesntMatch {};
+  class WaveDoesntMatch {};
+  class FmtDoesntMatch {};
+  class DataDoesntMatch {};
+}
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            The rest of the exceptions occur if some identifiers don&#39;t match. By the way, I 
+            found a very interesting feature of WAVE files written by Microsoft &quot;Sound 
+            Recorder;&quot; the data in these files shifted on 6 bytes, so it starts from 50 
+            bytes. So, I had to foresee this, and I did something like this:</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">inline void CWaveFile::ReadDATA()
+{
+  try {
+
+    pDATA = reinterpret_cast&gt; DATA* &gt;( dataAddress );
+    if( !CheckID( pDATA-&gt;dataID, &#39;d&#39;, &#39;a&#39;, &#39;t&#39;, &#39;a&#39;) ) {
+      throw WaveErrors::DataDoesntMatch();
+    }
+
+  }catch( WaveErrors::DataDoesntMatch &amp; ) {
+    <span class="codeComment">//something strange! In Microsoft WAVE files, the DATA
+    //identifier can be offset (maybe because of address alignment)
+    //Start to looking DATA_ID &quot;manually&quot; ;)</span>
+    PBYTE b = Base();
+    BOOL foundData = FALSE;
+    while(  (dataAddress - b) !=  dwSize ) {
+      if( *dataAddress == &#39;d&#39; ) {
+        <span class="codeComment">//It can be DATA_ID, check it!</span>
+        pDATA = reinterpret_cast&lt; DATA * &gt;( dataAddress );
+        if( CheckID( pDATA-&gt;dataID, &#39;d&#39;,&#39;a&#39;,&#39;t&#39;,&#39;a&#39; ) ) {
+          <span class="codeComment">//DATA_ID was found</span>
+          foundData = TRUE;
+          break;
+        }
+      }
+      dataAddress++;
+    }
+    if( !foundData ) {
+      <span class="codeComment">//This file may be corrupted</span>
+      throw WaveErrors::DataDoesntMatch();
+    }
+  }
+}
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            So, as I mentioned in a comment, if the data identifier doesn&#39;t match, the 
+            function generates an exception and catches it by itself. It then tries to find 
+            a data identifier; if it does, everything is fine. If it doesn&#39;t¡ªsorry, the file 
+            probably is corrupted.</p>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            ReadDATA() is one of three private functions that is in charge of reading the 
+            WAVE header and checking all identifiers. They are all grouped in the ReadWave 
+            function:</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">void CWaveFile::ReadWave()
+{
+  ReadRIFF();
+  <span class="codeComment">//Move to next block</span>
+    dataAddress += sizeof( *pRIFF );
+  ReadFMT();
+  <span class="codeComment">//Move to next block</span>
+  dataAddress += sizeof( *pFMT );
+  ReadDATA();
+  dataAddress += sizeof( *pDATA );
+  <span class="codeComment">//Wave has been read!</span>
+}
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            As you can see, we start to read the RIFF block; if everything is OK¡ªno 
+            exceptions were generated¡ªwe move the dataAddress pointer to the next block. 
+            Don&#39;t forget that we are using a file mapped in memory, the constructor of 
+            CWaveFile dataAddress pointer has been initialized by the base address of mapped 
+            file, and reading is like a reading of complex data structure in memory. Cool, 
+            isn&#39;t it?) Then, we read the FMT and DATA blocks, so when we leave the ReadFile 
+            function, dataAddress points to audio data (as I said for programmers, digital 
+            audio audio data is an array of 8- or 16-bit numbers), I use such a typedef:</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">typedef short          AudioWord;
+typedef unsigned char  AudioByte;
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            It is time to check CWaveFile with a simple example. Let&#39;s open a WAVE file and 
+            read all audio information that is stored in it.</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">#include &lt;iostream&gt;
+using namespace std;
+
+#include &quot;CWaveFile.h&quot;
+
+int main()
+{
+  try {
+
+    CWaveFile wave(&quot;noise.wav&quot;);
+    WAVEFORM *format = wave.GetWaveFormat();
+    cout &lt;&lt; &quot;Format: &quot; &lt;&lt; format-&gt;wFormatTag &lt;&lt; endl;
+    cout &lt;&lt; &quot;Samples per second: &quot; &lt;&lt; format-&gt;nSamplesPerSec
+         &lt;&lt; endl;
+    cout &lt;&lt; &quot;Channels: &quot; &lt;&lt; format-&gt;nChannels &lt;&lt; endl;
+    cout &lt;&lt; &quot;Bit per sample: &quot; &lt;&lt; format-&gt;wBitsPerSample &lt;&lt; endl;
+    if( format-&gt;wBitsPerSample == 16 ) {
+      AudioWord *buffer = reinterpret_cast&lt; AudioWord * &gt;
+                          ( wave.GetData() );
+      DATA *data = wave.GetWaveData();
+      DWORD samples = data-&gt;dataSIZE / sizeof(AudioData); 
+      cout &lt;&lt; &quot;Samples number: &quot; &lt;&lt; samples &lt;&lt; endl;
+      cin.get();
+      for( DWORD p = 0; p &lt; samples; p++ ) {
+        cout &lt;&lt; p &lt;&lt; &quot;: &quot; &lt;&lt; buffer[p] &lt;&lt; endl;
+      }
+    }
+
+  }catch(WaveErrors::FileOperation &amp; ) {
+    cout &lt;&lt; &quot;File operation error!\n&quot;;
+  }catch(WaveErrors::RiffDoesntMatch &amp; ) {
+    cout &lt;&lt; &quot;Riff doesn&#39;t match!\n&quot;;
+  }catch(WaveErrors::WaveDoesntMatch &amp; ) {
+    cout &lt;&lt; &quot;Wave doesn&#39;t match!\n&quot;;
+  }catch(WaveErrors::DataDoesntMatch &amp; ) {
+    cout &lt;&lt; &quot;Data doesn&#39;t match!\n&quot;;
+  }
+  return 0;
+}
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            This is a simple console application, but it does a lot of work! In my case, I 
+            got something like this:</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">  Format: 1
+  Samples per second: 22050
+  Channels: 1
+  Bits per sample: 16
+  Samples number: 174680
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            First of all, it checks &quot;noise.wav&quot; for validation. If everything is fine, it 
+            continues to work. (Note: The Format descriptor equals 1; it is in PCM format, 
+            the simplest format of digital sound because it is not compressed. I work with 
+            this kind of files; you can easily use CWaveFile with other formats, but you 
+            have to be concerned about data interpretation by yourself.) Samples per second 
+            (or sampling frequency): 22050. Channels: 1 = mono sound. Bits per sample: 16. I 
+            needed this information because I have to know how I should interpret the data. 
+            I use reinterpret_cast to cast LPVOID, which is returned by the GetData() 
+            function to AudioData*. The most important moment here is the size of the data.</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">DATA *data = wave.GetWaveData();
+DWORD samples = data-&gt;dataSIZE / sizeof(AudioData);
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            You have to use this with code to get information about the size of data; the 
+            dataSIZE field contains the size of data in bytes, but we know that we are 
+            currently working with 16-bit audio,</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">if( format-&gt;wBitsPerSample == 16 ) {</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            so we have to divide dataSIZE by sizeof(AudioData) (or just 2, 16-bit is 2 
+            bytes). Then, you do what you need to do with audio data; I just output it to 
+            the console. Notice how easily you have done all these things, and, as I 
+            promised, you get your array with data.</p>
+        <h3 style="margin-top: 0.2em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; font-weight: bold; color: rgb(0, 0, 63); line-height: 1.3em; ">
+            Displaying the Data</h3>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            No doubt, this application works perfectly, but it is just a console 
+            application. Now it&#39;s time to get all the advantages of the Windows GUI. The 
+            most important question for the person who works this any type of data (audio, 
+            radiotechnical, statistical) is: What will this data look like? Now, we are 
+            going to answer this question.</p>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            As you can see, the CWaveFile class is inherited from CObject. I did it because 
+            this class will be used in an MFC application. So, if you want to see something 
+            like this in your application, you should read this part of the article.</p>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            <a href="http://www.codeguru.com/cpp/g-m/multimedia/audio/article.php/CWaveFile2.gif" 
+                style="color: rgb(5, 48, 97); text-decoration: underline !important; " 
+                target="new">
+            <br style="font-size: 12px; line-height: 1em; " />
+            </a>
+        </p>
+        <a href="http://www.codeguru.com/cpp/g-m/multimedia/audio/article.php/CWaveFile2.gif" 
+            style="color: rgb(5, 48, 97); text-decoration: underline !important; " 
+            target="new"></a>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            <a href="http://www.codeguru.com/cpp/g-m/multimedia/audio/article.php/CWaveFile2.gif" 
+                style="color: rgb(5, 48, 97); text-decoration: underline !important; " 
+                target="new">
+            <img src="http://www.codeguru.com/img/legacy/multimedia/CWaveFile2.gif" 
+                style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; " 
+                width="500" /><br style="font-size: 12px; line-height: 1em; " />
+            <font size="3"><em style="font-style: italic; font-weight: normal; ">Click here 
+            for a larger image.</em></font></a></p>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            CWaveFile has the</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">BOOL DrawData( CDC *pDC, RECT *pRect, CSize *pNewSize )</pre>
+        function member.This function is in charge of drawing data on device context. 
+        For the best understanding of how to use it, I&#39;ll give you an example:<p 
+            style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+        </p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">void CAnalyseView::OnDraw(CDC* pDC )
+{
+  CAnalyseDoc* pDoc = GetDocument();
+  ASSERT_VALID(pDoc);
+
+  <span class="codeComment">// TODO: add draw code for native data here</span>
+  pDC-&gt;SaveDC();
+  CRect rect;
+  CBrush brush( RGB( 150, 200, 230 ) );
+  GetClientRect( &amp;rect );
+  FillRect( *pDC, &amp;rect, brush );
+
+  pDC-&gt;MoveTo( rect.left, rect.bottom/2 );
+  CWaveFile wave(pDoc-&gt;m_fileName);
+  wave.DrawData( pDC, &amp;rect, &amp;m_szSize );
+
+  pDC-&gt;MoveTo( rect.left, rect.bottom/2 );
+  pDC-&gt;LineTo(rect.right, rect.bottom/2 ); 
+  pDC-&gt;RestoreDC(-1);
+}
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            This is the usual OnDraw function. The DrawData function takes three arguments: 
+            pointer to CDC object, pointer to CRect structure, and pointer to CSize 
+            structure. You can get it in the OnSize method, as shown in the following code:</p>
+        <pre style="border: 2px solid rgb(245, 243, 215); padding: 5px 10px; background: url('http://www.codeguru.com/newimg/images/paperbg.gif') repeat repeat 0px 0px; margin-top: 3px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: 'courier new', monospace; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0); width: 570px; display: block; font-size: 13px; line-height: 16px; overflow-x: auto;">void CAnalyseView::OnSize(UINT nType, int cx, int cy)
+{
+  CView::OnSize(nType, cx, cy);
+
+  <span class="codeComment">// TODO: Add your message handler code here</span>
+  if( cx == 0 || cy == 0 ) return;
+  m_szSize = CSize( cx, cy );
+}
+</pre>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            That&#39;s all! But, I forgot to tell you one disadvantage of the DrawData method. 
+            It correctly displays mono signals only. Stereo signals differ from mono in that 
+            the samples in stereo go one after another (left channel, right channel, left 
+            channel, right channel, and so forth). So, it is no problem to display it, too.</p>
+        <h3 style="margin-top: 0.2em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; font-weight: bold; color: rgb(0, 0, 63); line-height: 1.3em; ">
+            Conclusions</h3>
+        <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-size: 13px; ">
+            I would like to say thank you to everyone who read this article to the end 
+            because I wrote it for you! I know that CWaveFile is not finished yet; if you 
+            add some more functionality for it (or find some bugs; that&#39;s more probable), 
+            please let me know. See you on the Net!</p>
+    </div>
+    </span></span>
+
+
+
+</BODY>
+</HTML>
